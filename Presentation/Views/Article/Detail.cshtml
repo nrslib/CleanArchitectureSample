@@ -1,0 +1,18 @@
+﻿@model UseCase.Articles.Common.ArticleDto
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>@Model.Title</h2>
+<section>
+    <p>
+        @Model.Body
+    </p>
+</section>
+
+<section>
+    <p>
+        @Html.ActionLink("Back to list", "MyList")    
+    </p>   
+</section>

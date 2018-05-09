@@ -1,0 +1,31 @@
+﻿@model Presentation.Models.Article.ArticleAddModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+@using (Html.BeginForm("AddConfirm","Article")) {
+    <table>
+        <thead>
+            
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                
+                    @Html.TextBoxFor(model => model.Title)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextAreaFor(model => model.Body)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Confirm"/>
+}
+
+@Html.ActionLink("Back to my list.", "MyList")

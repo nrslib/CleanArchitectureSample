@@ -1,0 +1,47 @@
+﻿@model Presentation.Models.Article.ArticleListModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>MyList</h2>
+<section>
+    <ul>
+        <li>
+            @Html.ActionLink("Add article", "Add")
+        </li>
+    </ul>
+</section>
+<section>
+    <h2>Articles</h2>
+    <table>
+        <colgroup>
+            <col width="100"/>
+            <col/>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Link
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Rows)
+            {
+                <tr>
+                    <td>@row.Title</td>
+                    <td>@Html.ActionLink("Go", "Detail", new {id = row.Id})</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2></h2>
+    <p>@Html.ActionLink("Back To Index", "Index")</p>
+</section>

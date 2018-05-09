@@ -3,7 +3,7 @@
 C# で記述されています。
 
 詳しい解説はホームページに記載します。
-[https://srnlib.com/](https://srnlib.com/ "https://srnlib.com/")
+[https://srnlib.com/clean-architecture/](https://srnlib.com/clean-architecture/ "https://srnlib.com/clean-architecture/")
 
 -----
 

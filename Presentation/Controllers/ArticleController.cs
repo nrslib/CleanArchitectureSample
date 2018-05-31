@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ControlPanelVueSPA.Library.Bus;
+using Microsoft.AspNetCore.Mvc;
 using Presentation.Libs.Exceptions;
 using Presentation.Models.Article;
 using Presentation.Services.Article;
@@ -11,9 +12,9 @@ namespace Presentation.Controllers
 {
     public class ArticleController : Controller
     {
-        private readonly IArticleService bus;
+        private readonly UseCaseBus bus;
 
-        public ArticleController(IArticleService bus)
+        public ArticleController(UseCaseBus bus)
         {
             this.bus = bus;
         }
@@ -30,9 +31,8 @@ namespace Presentation.Controllers
         public ActionResult AddConfirm(ArticleAddModel model)
         {
             var parameter = new ArticleCreateParameter(model.Title, model.Body, myId());
-            var command = bus.CreateCommand;
-            command.ExecuteCommand(parameter);
-            
+            var response = bus.Handle(parameter);
+
             // You shoud return generated id from service or defivary notification object, if you wanna redirect to detail.
             return RedirectToAction("MyList");
         }
@@ -40,9 +40,8 @@ namespace Presentation.Controllers
         public ActionResult MyList()
         {
             var parameter = new ArticleGetByAutherParameter(myId());
-            var query = bus.GetByAutherQuery;
-            var result = query.ExecuteQuery(parameter);
-            var listViewModel = new ArticleListModel(result.Articles);
+            var response = bus.Handle(parameter);
+            var listViewModel = new ArticleListModel(response.Articles);
             return View(listViewModel);
         }
 
@@ -52,9 +51,8 @@ namespace Presentation.Controllers
             }
             var articleId = id.Value;
             var parameter = new ArticleDetailParameter(articleId);
-            var query = bus.DetailQuery;
-            var detailResult = query.GetDetail(parameter);
-            var optArticle = detailResult.Article;
+            var response = bus.Handle(parameter);
+            var optArticle = response.Article;
             var article = optArticle.Match(
                 x => new ArticleDto(x.Id, x.Title, x.Body),
                 () => throw new TargetIdNotFoundException(articleId)

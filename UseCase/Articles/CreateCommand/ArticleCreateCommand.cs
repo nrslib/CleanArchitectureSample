@@ -1,7 +1,8 @@
-﻿namespace UseCase.Articles.CreateCommand
+﻿using UseCase.Core;
+
+namespace UseCase.Articles.CreateCommand
 {
-    public interface IArticleCreateCommand
+    public interface IArticleCreateCommand : IUseCase<ArticleCreateParameter, ArticleCreateResponse>
     {
-        void ExecuteCommand(ArticleCreateParameter parameter);
     }
 }

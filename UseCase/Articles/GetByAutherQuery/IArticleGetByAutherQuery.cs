@@ -1,7 +1,8 @@
-﻿namespace UseCase.Articles.GetByAutherQuery
+﻿using UseCase.Core;
+
+namespace UseCase.Articles.GetByAutherQuery
 {
-    public interface IArticleGetByAutherQuery
+    public interface IArticleGetByAutherQuery : IUseCase<ArticleGetByAutherParameter, ArticleGetByAutherResult>
     {
-        ArticleGetByAutherResult ExecuteQuery(ArticleGetByAutherParameter parameter);
     }
 }

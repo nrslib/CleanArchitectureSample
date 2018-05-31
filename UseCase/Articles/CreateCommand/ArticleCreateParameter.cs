@@ -1,6 +1,8 @@
-﻿namespace UseCase.Articles.CreateCommand
+﻿using UseCase.Core;
+
+namespace UseCase.Articles.CreateCommand
 {
-    public class ArticleCreateParameter
+    public class ArticleCreateParameter : IRequest<ArticleCreateResponse>
     {
         public ArticleCreateParameter(string title, string body, long autherId) {
             Title = title;

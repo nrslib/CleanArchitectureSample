@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UseCase.Articles.Common;
+using UseCase.Core;
 
 namespace UseCase.Articles.GetByAutherQuery
 {
-    public class ArticleGetByAutherResult
+    public class ArticleGetByAutherResult : IResponse
     {
         public ArticleGetByAutherResult(IEnumerable<ArticleDto> articles)
         {

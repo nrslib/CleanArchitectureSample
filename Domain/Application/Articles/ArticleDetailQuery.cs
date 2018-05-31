@@ -12,9 +12,9 @@ namespace Domain.Application.Articles {
             this.articleRepository = articleRepository;
         }
 
-        public ArticleDetailResult GetDetail(ArticleDetailParameter parameter)
+        public ArticleDetailResult Handle(ArticleDetailParameter request)
         {
-            var articleId = new ArticleId(parameter.ArticleId);
+            var articleId = new ArticleId(request.ArticleId);
             var article = articleRepository.Find(articleId);
             var transformer = new ArticleToDtoTransformer();
             var dto = article.Match(x => Option<ArticleDto>.Create(x.Transform(transformer)), Option<ArticleDto>.None);

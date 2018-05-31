@@ -1,7 +1,8 @@
-﻿namespace UseCase.Articles.DetailQuery
+﻿using UseCase.Core;
+
+namespace UseCase.Articles.DetailQuery
 {
-    public interface IArticleDetailQuery
+    public interface IArticleDetailQuery : IUseCase<ArticleDetailParameter, ArticleDetailResult>
     {
-        ArticleDetailResult GetDetail(ArticleDetailParameter parameter);
     }
 }

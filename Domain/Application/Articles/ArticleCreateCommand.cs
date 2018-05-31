@@ -13,12 +13,13 @@ namespace Domain.Application.Articles
             this.articleRepository = articleRepository;
         }
 
-        public void ExecuteCommand(ArticleCreateParameter parameter)
+        public ArticleCreateResponse Handle(ArticleCreateParameter request)
         {
-            var autherId = new UserId(parameter.AutherId);
+            var autherId = new UserId(request.AutherId);
             var id = articleRepository.GenerateId();
-            var article = new Article(id, parameter.Title, parameter.Body, autherId);
+            var article = new Article(id, request.Title, request.Body, autherId);
             articleRepository.Save(article);
+            return new ArticleCreateResponse(id.Value);
         }
     }
 }

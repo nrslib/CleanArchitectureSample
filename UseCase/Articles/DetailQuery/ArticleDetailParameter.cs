@@ -1,6 +1,8 @@
-﻿namespace UseCase.Articles.DetailQuery
+﻿using UseCase.Core;
+
+namespace UseCase.Articles.DetailQuery
 {
-    public class ArticleDetailParameter
+    public class ArticleDetailParameter : IRequest<ArticleDetailResult>
     {
         public ArticleDetailParameter(long articleId)
         {

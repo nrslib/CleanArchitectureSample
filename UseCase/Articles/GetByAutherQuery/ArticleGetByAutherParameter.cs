@@ -1,6 +1,8 @@
-﻿namespace UseCase.Articles.GetByAutherQuery
+﻿using UseCase.Core;
+
+namespace UseCase.Articles.GetByAutherQuery
 {
-    public class ArticleGetByAutherParameter
+    public class ArticleGetByAutherParameter : IRequest<ArticleGetByAutherResult>
     {
         public ArticleGetByAutherParameter(long autherId)
         {

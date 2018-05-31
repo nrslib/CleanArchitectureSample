@@ -14,9 +14,9 @@ namespace Domain.Application.Articles
             this.articleRepository = articleRepository;
         }
 
-        public ArticleGetByAutherResult ExecuteQuery(ArticleGetByAutherParameter parameter)
+        public ArticleGetByAutherResult Handle(ArticleGetByAutherParameter request)
         {
-            var autherId = new UserId(parameter.AutherId);
+            var autherId = new UserId(request.AutherId);
             var articles = articleRepository.FindByAuther(autherId);
             var transformer = new ArticleToDtoTransformer();
             var articleDtos = articles.Select(x => x.Transform(transformer));

@@ -4,7 +4,7 @@ using Presentation.Models.Article;
 using UseCase.Articles.Common;
 using UseCase.Articles.Create;
 using UseCase.Articles.GetDetail;
-using UseCase.Articles.GetByAutherQuery;
+using UseCase.Articles.GetByAuther;
 using UseCase.Core.Bus;
 
 namespace Presentation.Controllers

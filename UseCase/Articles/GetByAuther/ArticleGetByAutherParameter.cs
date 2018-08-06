@@ -1,8 +1,8 @@
 ﻿using UseCase.Core;
 
-namespace UseCase.Articles.GetByAutherQuery
+namespace UseCase.Articles.GetByAuther
 {
-    public class ArticleGetByAutherRequest : IRequest<ArticleGetByAutherResult>
+    public class ArticleGetByAutherRequest : IRequest<ArticleGetByAutherResponse>
     {
         public ArticleGetByAutherRequest(long autherId)
         {

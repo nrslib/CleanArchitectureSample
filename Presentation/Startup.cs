@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UseCase.Articles.Create;
 using UseCase.Articles.GetDetail;
-using UseCase.Articles.GetByAutherQuery;
+using UseCase.Articles.GetByAuther;
 using UseCase.Core.Bus;
 
 namespace Presentation

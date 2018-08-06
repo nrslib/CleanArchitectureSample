@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Domain.Domain.Model.Articles;
 using Domain.Domain.Model.Users;
-using UseCase.Articles.GetByAutherQuery;
+using UseCase.Articles.GetByAuther;
 
 namespace Domain.Application.Articles
 {
@@ -14,13 +14,13 @@ namespace Domain.Application.Articles
             this.articleRepository = articleRepository;
         }
 
-        public ArticleGetByAutherResult Handle(ArticleGetByAutherRequest request)
+        public ArticleGetByAutherResponse Handle(ArticleGetByAutherRequest request)
         {
             var autherId = new UserId(request.AutherId);
             var articles = articleRepository.FindByAuther(autherId);
             var transformer = new ArticleToDtoTransformer();
             var articleDtos = articles.Select(x => x.Transform(transformer));
-            var dto = new ArticleGetByAutherResult(articleDtos);
+            var dto = new ArticleGetByAutherResponse(articleDtos);
             return dto;
         }
     }

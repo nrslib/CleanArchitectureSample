@@ -3,11 +3,11 @@ using System.Linq;
 using UseCase.Articles.Common;
 using UseCase.Core;
 
-namespace UseCase.Articles.GetByAutherQuery
+namespace UseCase.Articles.GetByAuther
 {
-    public class ArticleGetByAutherResult : IResponse
+    public class ArticleGetByAutherResponse : IResponse
     {
-        public ArticleGetByAutherResult(IEnumerable<ArticleDto> articles)
+        public ArticleGetByAutherResponse(IEnumerable<ArticleDto> articles)
         {
             Articles = articles.ToArray();
         }

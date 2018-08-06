@@ -1,12 +1,11 @@
-﻿using ControlPanelVueSPA.Library.Bus;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Presentation.Libs.Exceptions;
 using Presentation.Models.Article;
-using Presentation.Services.Article;
 using UseCase.Articles.Common;
-using UseCase.Articles.CreateCommand;
-using UseCase.Articles.DetailQuery;
+using UseCase.Articles.Create;
+using UseCase.Articles.GetDetail;
 using UseCase.Articles.GetByAutherQuery;
+using UseCase.Core.Bus;
 
 namespace Presentation.Controllers
 {
@@ -30,7 +29,7 @@ namespace Presentation.Controllers
         [HttpPost]
         public ActionResult AddConfirm(ArticleAddModel model)
         {
-            var parameter = new ArticleCreateParameter(model.Title, model.Body, myId());
+            var parameter = new ArticleCreateRequest(model.Title, model.Body, myId());
             var response = bus.Handle(parameter);
 
             // You shoud return generated id from service or defivary notification object, if you wanna redirect to detail.
@@ -39,7 +38,7 @@ namespace Presentation.Controllers
 
         public ActionResult MyList()
         {
-            var parameter = new ArticleGetByAutherParameter(myId());
+            var parameter = new ArticleGetByAutherRequest(myId());
             var response = bus.Handle(parameter);
             var listViewModel = new ArticleListModel(response.Articles);
             return View(listViewModel);
@@ -50,7 +49,7 @@ namespace Presentation.Controllers
                 return RedirectToAction("MyList");
             }
             var articleId = id.Value;
-            var parameter = new ArticleDetailParameter(articleId);
+            var parameter = new ArticleGetDetailRequest(articleId);
             var response = bus.Handle(parameter);
             var optArticle = response.Article;
             var article = optArticle.Match(

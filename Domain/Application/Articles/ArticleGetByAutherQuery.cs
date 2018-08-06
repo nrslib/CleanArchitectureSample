@@ -5,16 +5,16 @@ using UseCase.Articles.GetByAutherQuery;
 
 namespace Domain.Application.Articles
 {
-    public class ArticleGetByAutherQuery : IArticleGetByAutherQuery
+    public class ArticleGetByAutherInteractor : IArticleGetByAutherUseCase
     {
         private readonly IArticleRepository articleRepository;
 
-        public ArticleGetByAutherQuery(IArticleRepository articleRepository)
+        public ArticleGetByAutherInteractor(IArticleRepository articleRepository)
         {
             this.articleRepository = articleRepository;
         }
 
-        public ArticleGetByAutherResult Handle(ArticleGetByAutherParameter request)
+        public ArticleGetByAutherResult Handle(ArticleGetByAutherRequest request)
         {
             var autherId = new UserId(request.AutherId);
             var articles = articleRepository.FindByAuther(autherId);

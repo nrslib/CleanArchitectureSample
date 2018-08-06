@@ -2,9 +2,9 @@
 
 namespace UseCase.Articles.GetByAutherQuery
 {
-    public class ArticleGetByAutherParameter : IRequest<ArticleGetByAutherResult>
+    public class ArticleGetByAutherRequest : IRequest<ArticleGetByAutherResult>
     {
-        public ArticleGetByAutherParameter(long autherId)
+        public ArticleGetByAutherRequest(long autherId)
         {
             AutherId = autherId;
         }

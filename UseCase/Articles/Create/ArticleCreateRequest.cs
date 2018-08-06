@@ -1,10 +1,10 @@
 ﻿using UseCase.Core;
 
-namespace UseCase.Articles.CreateCommand
+namespace UseCase.Articles.Create
 {
-    public class ArticleCreateParameter : IRequest<ArticleCreateResponse>
+    public class ArticleCreateRequest : IRequest<ArticleCreateResponse>
     {
-        public ArticleCreateParameter(string title, string body, long autherId) {
+        public ArticleCreateRequest(string title, string body, long autherId) {
             Title = title;
             Body = body;
             AutherId = autherId;

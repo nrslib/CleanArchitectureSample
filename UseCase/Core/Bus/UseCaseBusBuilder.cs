@@ -1,34 +1,30 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using UseCase.Core;
 
-namespace ControlPanelVueSPA.Library.Bus
+namespace UseCase.Core.Bus
 {
     public class UseCaseBusBuilder
     {
         private readonly IServiceCollection services;
-        private readonly UseCaseBus bus;
+        private readonly UseCaseBus bus = new UseCaseBus();
 
         public UseCaseBusBuilder(IServiceCollection services)
         {
             this.services = services;
-            bus = new UseCaseBus();
         }
 
         public UseCaseBus Build()
         {
             var provider = services.BuildServiceProvider();
             bus.Setup(provider);
-
             return bus;
         }
 
-        public void RegisterUseCase<TRequest, TUseCase, TImplement>()
-            where TUseCase : class, IUseCase<TRequest, IResponse>
+        public void RegisterUseCase<TRequest, TImplement>()
             where TRequest : IRequest<IResponse>
-            where TImplement : class, TUseCase
+            where TImplement : class, IUseCase<TRequest, IResponse>
         {
-            services.AddSingleton<TUseCase, TImplement>();
-            bus.Register<TRequest, TUseCase>();
+            services.AddSingleton<TImplement>();
+            bus.Register<TRequest, TImplement>();
         }
     }
 }

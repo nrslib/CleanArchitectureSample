@@ -2,7 +2,7 @@
 
 namespace UseCase.Articles.GetByAutherQuery
 {
-    public interface IArticleGetByAutherQuery : IUseCase<ArticleGetByAutherParameter, ArticleGetByAutherResult>
+    public interface IArticleGetByAutherUseCase : IUseCase<ArticleGetByAutherRequest, ArticleGetByAutherResult>
     {
     }
 }

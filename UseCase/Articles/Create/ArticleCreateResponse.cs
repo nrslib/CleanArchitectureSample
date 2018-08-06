@@ -1,6 +1,6 @@
 ﻿using UseCase.Core;
 
-namespace UseCase.Articles.CreateCommand
+namespace UseCase.Articles.Create
 {
     public class ArticleCreateResponse : IResponse
     {

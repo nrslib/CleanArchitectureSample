@@ -2,11 +2,11 @@
 using UseCase.Articles.Common;
 using UseCase.Core;
 
-namespace UseCase.Articles.DetailQuery
+namespace UseCase.Articles.GetDetail
 {
-    public class ArticleDetailResult : IResponse
+    public class ArticleGetDetailResponse : IResponse
     {
-        public ArticleDetailResult(Option<ArticleDto> article) {
+        public ArticleGetDetailResponse(Option<ArticleDto> article) {
             Article = article;
         }
 
